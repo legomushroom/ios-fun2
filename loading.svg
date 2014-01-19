@@ -1,0 +1,45 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		width="1000px" height="1000px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+	
+
+	<!-- L -->
+	<line id="l1" fill="none" stroke="#000000" stroke-width="3" x1="165" y1="435" x2="165" y2="565" x1e="185" y1e="435" x2e="185" y2e="565" />
+
+	<line id="l2" fill="none" stroke="#000000" stroke-width="3" x1="241.758" y1="562.875" x2="163.164" y2="562.875" x1e="235" y1e="435" x2e="235" y2e="565" />
+
+
+	<!-- O -->
+	<path id="o1" fill="none" stroke="#000000" stroke-width="3" d="M304.783,434.547 c-72.952,-1.643,-79.275,130.933,0,130.921" d2="M285,434.547c0,0,0,116.953,0,130.921" />
+
+	<path id="o2" fill="none" stroke="#000000" stroke-width="3" d="M304.783,434.547c72.945,-1.643,79.269,130.933,0,130.921" d2="M335,434.547c0,0,0,116.953,0,130.921" />
+
+
+	<!-- A -->
+	<line id="a1" fill="none" stroke="#000000" stroke-width="3" x1="369.308" y1="565" x2="421.327" y2="435" x1e="385" y1e="565" x2e="385" y2e="435" />
+
+	<line id="a2" fill="none" stroke="#000000" stroke-width="3" x1="472.825" y1="565" x2="422.718" y2="435" x1e="485" y1e="565" x2e="485" y2e="435" />
+
+	<line id="a3" fill="none" stroke="#000000" stroke-width="3" x1="386.5" y1="520.379" x2="455.654" y2="520.379" x1e="435" y1e="565" x2e="435" y2e="435" />
+
+
+	<!-- D -->
+	<line id="d1" fill="none" stroke="#000000" stroke-width="3" x1="490.387" y1="435" x2="490.387" y2="565" x1e="550" y1e="435" x2e="550" y2e="565" />
+	<path id="d2" fill="none" stroke="#000000" stroke-width="3" d="M490.453,437.453c117.177,-0.025,117.11,125.438,-0.066,125.438" d2="M590,435c-0.066,4.213,-0.066,119.547,0,130.921"/>
+
+
+
+	<!-- I -->
+	<line id="i1" fill="none" stroke="#000000" stroke-width="3" x1="600.993" y1="435" x2="600.993" y2="565" x1e="630" y1e="435" x2e="630" y2e="565" />
+
+	<!-- N -->
+	<line id="n1" fill="none" stroke="#000000" stroke-width="3" x1="625.529" y1="565" x2="625.529" y2="435" x1e="660" y1e="565" x2e="660" y2e="435" />
+	<line id="n2" fill="none" stroke="#000000" stroke-width="3" x1="625.771" y1="435" x2="718.609" y2="565"  x1e="700" y1e="435" x2e="700" y2e="565" />
+	<line id="n3" id="n3" fill="none" stroke="#000000" stroke-width="3" x1="718.893" y1="435" x2="718.893" y2="565" x1e="760" y1e="435" x2e="760" y2e="565" />
+
+
+
+
+
+	<line id="g1" fill="none" stroke="#000000" stroke-width="3" x1="796.983" y1="504.984" x2="850.393" y2="504.984" x1e="800" y1e="435" x2e="800" y2e="565" />
+	<path id="g2" fill="none" stroke="#000000" stroke-width="3" d="M850.038,476.075c-156.441,-157.38,-133.058,224.829,1.558,28.236" d2="M860,434.547c0,0,0,116.953,0,130.921" />
+</svg>
