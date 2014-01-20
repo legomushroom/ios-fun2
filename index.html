@@ -47,7 +47,6 @@
     
 
     <mask id="mask2" style="stroke:#ccc;stroke-width:2px;">
-    
         <!-- L -->
         <line id="l1" fill="none" x1="165" y1="435" x2="165" y2="565" x1e="165" y1e="435" x2e="165" y2e="565" />
 
@@ -89,6 +88,17 @@
 
     </mask>
 
+    <filter id='color-shadow-2' data-iconmelon='filter:d8b3243222f113cd0dd357f0aaed2ee9' color-interpolation-filters="sRGB">
+        <feComponentTransfer in="SourceGraphic">
+            <feFuncR type="discrete" tableValues="1"/>
+            <feFuncG type="discrete" tableValues="0.239215686"/>
+            <feFuncB type="discrete" tableValues="0.498039216"/>
+        </feComponentTransfer>
+        <feGaussianBlur stdDeviation="1"/>
+        <feOffset dx="1" dy="1" result="shadow"/>
+        <feComposite in="SourceGraphic" in2="shadow" operator="over"/>
+    </filter>
+
 
 
   </defs>
@@ -114,14 +124,6 @@
     <script>
       i = 0;
       window.Main.setProgress(90)
-      
-      
-      
-      
-      
-      
-      
-      
       
       
     </script>
