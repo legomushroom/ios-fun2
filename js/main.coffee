@@ -61,7 +61,7 @@ class Main
 	vars:->
 		@transition = 500
 		@particleDelay = 1
-		@delay = 2000
+		@delay = 8000
 		@rainbowTime = 25000
 
 		@rainbow = document.getElementById('rainbow')

@@ -97,7 +97,7 @@
     Main.prototype.vars = function() {
       this.transition = 500;
       this.particleDelay = 1;
-      this.delay = 2000;
+      this.delay = 8000;
       this.rainbowTime = 25000;
       this.rainbow = document.getElementById('rainbow');
       this.process = document.getElementById('process');
