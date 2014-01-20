@@ -96,9 +96,9 @@
 
     Main.prototype.vars = function() {
       this.transition = 500;
-      this.particleDelay = 1;
+      this.particleDelay = 50;
       this.delay = 8000;
-      this.rainbowTime = 25000;
+      this.rainbowTime = 35000;
       this.percent = 6.9;
       this.rainbow = document.getElementById('rainbow');
       this.process = document.getElementById('process');
@@ -171,7 +171,7 @@
       }).to({
         deg: 360
       }, this.rainbowTime).onUpdate(function() {
-        return it.rainbow.setAttribute('transform', 'rotate(' + this.deg + ', 500, 500)');
+        return it.rainbow.setAttribute('transform', 'rotate(' + this.deg + ', 0, 1000)');
       }).start().repeat(true);
     };
 
@@ -225,7 +225,6 @@
       n = this.normalizeNum(n);
       time = Math.abs(Math.abs(this.currentProgress) - Math.abs(n));
       it = this;
-      console.log(n, this.currentProgress);
       return tween = new TWEEN.Tween({
         p: this.currentProgress
       }).to({

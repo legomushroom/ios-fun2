@@ -60,9 +60,9 @@ class Main
 
 	vars:->
 		@transition = 500
-		@particleDelay = 1
+		@particleDelay = 50
 		@delay = 8000
-		@rainbowTime = 25000
+		@rainbowTime = 35000
 		@percent = 6.9
 
 		@rainbow = document.getElementById('rainbow')
@@ -113,7 +113,7 @@ class Main
 		tween = new TWEEN.Tween({ deg: 0 })
 			.to({ deg: 360 }, @rainbowTime)
 			.onUpdate(->
-				it.rainbow.setAttribute 'transform', 'rotate(' + @deg + ', 500, 500)'
+				it.rainbow.setAttribute 'transform', 'rotate(' + @deg + ', 0, 1000)'
 			).start().repeat(true)
 
 
@@ -137,7 +137,6 @@ class Main
 		n = @normalizeNum n
 		time = Math.abs Math.abs(@currentProgress) - Math.abs(n)
 		it = @
-		console.log n, @currentProgress
 		tween = new TWEEN.Tween({ p: @currentProgress })
 			.to({ p: n }, time*2)
 			.easing(@easing)
