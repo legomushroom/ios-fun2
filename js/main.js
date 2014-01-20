@@ -97,7 +97,7 @@
     Main.prototype.vars = function() {
       this.transition = 500;
       this.particleDelay = 50;
-      this.delay = 8000;
+      this.delay = 4000;
       this.rainbowTime = 35000;
       this.percent = 6.9;
       this.rainbow = document.getElementById('rainbow');

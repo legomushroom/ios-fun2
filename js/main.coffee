@@ -61,7 +61,7 @@ class Main
 	vars:->
 		@transition = 500
 		@particleDelay = 50
-		@delay = 8000
+		@delay = 4000
 		@rainbowTime = 35000
 		@percent = 6.9
 

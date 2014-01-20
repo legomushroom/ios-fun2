@@ -24,7 +24,26 @@ html
 
 		script
 			i = 0;
-			window.Main.setProgress(90)
+			setTimeout(function(){
+				window.Main.setProgress(10)
+			}, 1000);
+
+			setTimeout(function(){
+				window.Main.setProgress(20)				
+			}, 2000);
+
+			setTimeout(function(){
+				window.Main.setProgress(50)				
+			}, 5000);
+
+
+			setTimeout(function(){
+				window.Main.setProgress(90)				
+			}, 8000);
+
+			setTimeout(function(){
+				window.Main.setProgress(100)				
+			}, 9000);
 
 
 //- <gg(filter="url(#color-shadow-2)"></g>

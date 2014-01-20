@@ -88,18 +88,6 @@
 
     </mask>
 
-    <filter id='color-shadow-2' data-iconmelon='filter:d8b3243222f113cd0dd357f0aaed2ee9' color-interpolation-filters="sRGB">
-        <feComponentTransfer in="SourceGraphic">
-            <feFuncR type="discrete" tableValues="1"/>
-            <feFuncG type="discrete" tableValues="0.239215686"/>
-            <feFuncB type="discrete" tableValues="0.498039216"/>
-        </feComponentTransfer>
-        <feGaussianBlur stdDeviation="1"/>
-        <feOffset dx="1" dy="1" result="shadow"/>
-        <feComposite in="SourceGraphic" in2="shadow" operator="over"/>
-    </filter>
-
-
 
   </defs>
 
@@ -123,7 +111,26 @@
     <script src="js/main.js"></script>
     <script>
       i = 0;
-      window.Main.setProgress(90)
+      setTimeout(function(){
+       window.Main.setProgress(10)
+      }, 1000);
+      
+      setTimeout(function(){
+       window.Main.setProgress(20)				
+      }, 2000);
+      
+      setTimeout(function(){
+       window.Main.setProgress(50)				
+      }, 5000);
+      
+      
+      setTimeout(function(){
+       window.Main.setProgress(90)				
+      }, 8000);
+      
+      setTimeout(function(){
+       window.Main.setProgress(100)				
+      }, 9000);
       
       
     </script>
