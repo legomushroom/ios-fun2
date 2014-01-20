@@ -122,7 +122,6 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-@import 'css-assets/font/stylesheet.css';
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -137,9 +136,7 @@ html {
   overflow-x: hidden;
 }
 body {
-  background-color: c-bg;
-  font-family: 'infinity', monospace;
-  letter-spacing: 1px;
+  background-color: #fff;
 }
 ::selection{
 		background-color: #f59995;
@@ -1846,6 +1843,20 @@ a,
 }
 .c-grey10-bg-g {
   background-color: #fff;
+}
+.loader {
+  width: 1000px;
+  height: 1000px;
+  margin: 0 auto;
+  animation: rotate 2s linear infinite;
+  stroke-width: 2px;
+  border-radius: 50%;
+  position: relative;
+}
+.loader svg {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 .header-l {
   background: c-red;

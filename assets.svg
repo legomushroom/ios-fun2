@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>ios fun2</title>
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-  </head>
-  <body><svg id="svg" xmlns="http://www.w3.org/2000/svg" version="1.1" width="1000" height="1000" viewBox="0 0 1000 1000" style="margin-left:100%;position:absolute;">
+<svg id="svg" xmlns="http://www.w3.org/2000/svg" version="1.1" width="1000" height="1000" viewBox="0 0 1000 1000" style="margin-left:100%;position:absolute;">
   <defs>
     <linearGradient id="redyel" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0%" stop-color="#ff0000"/>   
@@ -98,30 +91,3 @@
 
 
 
-
-    <svg viewBox="0 0 1000 1000">
-      <g mask="url(#mask2)">
-        <rect transform="rotate(0)" fill="#ccc" width="100%" height="100%"></rect>
-        <svg id="process" x="-100%" width="100%" viewBox="0 0 1000 1000">
-          <rect id="rainbow" fill="url(#gradient-pattern)" width="1000" height="1000"></rect>
-        </svg>
-      </g>
-    </svg>
-    <script src="js/tween.min.js"></script>
-    <script src="js/main.js"></script>
-    <script>
-      i = 0;
-      window.Main.setProgress(30);
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-    </script>
-  </body>
-</html>

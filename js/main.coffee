@@ -59,11 +59,17 @@ class Main
 		@animate()
 
 	vars:->
-		@transition = 1000
-		@particleDelay = 25
-		@delay = 500
+		@transition = 500
+		@particleDelay = 1
+		@delay = 2000
+		@rainbowTime = 25000
 
-		@easing = TWEEN.Easing.Elastic.Out
+		@rainbow = document.getElementById('rainbow')
+		@process = document.getElementById('process')
+
+		@currentProgress = -100
+
+		@easing = TWEEN.Easing.Quadratic.Out
 		@animate = @bind @animate, @
 
 		@l1 = new Line id: 'l1'
@@ -99,10 +105,19 @@ class Main
 	animateChars:->
 		@animateLines()
 		@animateCurves()
+		@animateRainbow()
+
+	animateRainbow:->
+		it = @
+		tween = new TWEEN.Tween({ deg: 0 })
+			.to({ deg: 360 }, @rainbowTime)
+			.onUpdate(->
+				it.rainbow.setAttribute 'transform', 'rotate(' + @deg + ', 500, 500)'
+			).start().repeat(true)
+
 
 	animateCurves:->
 		it = @
-		
 		for curve, i in @curves
 			do (curve)=> 
 				start = { curve0: curve.d.curve[0], curve1: curve.d.curve[1], curve2: curve.d.curve[2], curve3: curve.d.curve[3], startX: curve.d.startPoint.x, startY: curve.d.startPoint.y, endX: curve.d.endPoint.x, endY: curve.d.endPoint.y }
@@ -113,9 +128,23 @@ class Main
 										.easing(@easing)
 										.onUpdate(->
 											curve.el.setAttribute 'd', "M#{@startX}, #{@startY} c#{@curve0}, #{@curve1}, #{@curve2}, #{@curve3}, #{@endX}, #{@endY}"
-										).yoyo(true).delay(@delay).repeat(999999)
+										).yoyo(true).delay(@delay).repeat(999999999999999999999)
 										.start()
 				, i*@particleDelay
+
+	setProgress:(n)->
+		n = @normalizeNum n
+		time = Math.abs Math.abs(@currentProgress) - Math.abs(n)
+		it = @
+		tween = new TWEEN.Tween({ p: @currentProgress })
+			.to({ p: n }, time*20)
+			.easing(@easing)
+			.onUpdate(->
+				it.process.setAttribute 'x', "#{@p}%"
+				it.currentProgress = @p
+			).start()
+		
+
 
 	animateLines:->
 		it = @
@@ -131,11 +160,14 @@ class Main
 
 												line.el.setAttribute 'x2', @x2
 												line.el.setAttribute 'y2', @y2
-											).yoyo(true).delay(@delay).repeat(999999)
+											).yoyo(true).delay(@delay).repeat(999999999999999999999)
 											.start()
 				, i*@particleDelay
 
-	
+	normalizeNum:(n)->
+		n = n % 101
+		n = 100 - n
+		n = - n
 
 	animate:->
 		requestAnimationFrame(@animate)
@@ -149,6 +181,4 @@ class Main
 		bindArgs = Array::slice.call(arguments, 2)
 		wrapper
 
-setTimeout =>
-	new Main
-, 2000
+window.Main = new Main
