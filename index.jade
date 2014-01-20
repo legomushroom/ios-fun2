@@ -10,8 +10,8 @@ html
 		//- include loading.svg
 
 		svg(viewBox="0 0 1000 1000")
-			g(mask="url(#mask2)")
-				rect(transform="rotate(0)", fill="#ccc", width="100%", height="100%")
+			g(mask="url(#mask)")
+				rect(fill="#ccc", width="100%", height="100%")
 
 				svg(id="process", x="-100%", width="100%", viewBox="0 0 1000 1000")
 					rect(id="rainbow", fill="url(#gradient-pattern)", width="1000", height="1000")
@@ -24,7 +24,7 @@ html
 
 		script
 			i = 0;
-			window.Main.setProgress(30);
+			//- window.Main.setProgress(30);
 
 
 
