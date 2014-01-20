@@ -99,9 +99,10 @@
       this.particleDelay = 1;
       this.delay = 8000;
       this.rainbowTime = 25000;
+      this.percent = 6.9;
       this.rainbow = document.getElementById('rainbow');
       this.process = document.getElementById('process');
-      this.currentProgress = -100;
+      this.currentProgress = 0;
       this.easing = TWEEN.Easing.Quadratic.Out;
       this.animate = this.bind(this.animate, this);
       this.l1 = new Line({
@@ -224,12 +225,13 @@
       n = this.normalizeNum(n);
       time = Math.abs(Math.abs(this.currentProgress) - Math.abs(n));
       it = this;
+      console.log(n, this.currentProgress);
       return tween = new TWEEN.Tween({
         p: this.currentProgress
       }).to({
         p: n
-      }, time * 20).easing(this.easing).onUpdate(function() {
-        it.process.setAttribute('x', "" + this.p + "%");
+      }, time * 2).easing(this.easing).onUpdate(function() {
+        it.process.setAttribute('width', "" + this.p);
         return it.currentProgress = this.p;
       }).start();
     };
@@ -271,8 +273,7 @@
 
     Main.prototype.normalizeNum = function(n) {
       n = n % 101;
-      n = 100 - n;
-      return n = -n;
+      return this.percent * n;
     };
 
     Main.prototype.animate = function() {

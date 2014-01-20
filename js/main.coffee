@@ -63,11 +63,12 @@ class Main
 		@particleDelay = 1
 		@delay = 8000
 		@rainbowTime = 25000
+		@percent = 6.9
 
 		@rainbow = document.getElementById('rainbow')
 		@process = document.getElementById('process')
 
-		@currentProgress = -100
+		@currentProgress = 0
 
 		@easing = TWEEN.Easing.Quadratic.Out
 		@animate = @bind @animate, @
@@ -136,11 +137,12 @@ class Main
 		n = @normalizeNum n
 		time = Math.abs Math.abs(@currentProgress) - Math.abs(n)
 		it = @
+		console.log n, @currentProgress
 		tween = new TWEEN.Tween({ p: @currentProgress })
-			.to({ p: n }, time*20)
+			.to({ p: n }, time*2)
 			.easing(@easing)
 			.onUpdate(->
-				it.process.setAttribute 'x', "#{@p}%"
+				it.process.setAttribute 'width', "#{@p}"
 				it.currentProgress = @p
 			).start()
 		
@@ -166,8 +168,7 @@ class Main
 
 	normalizeNum:(n)->
 		n = n % 101
-		n = 100 - n
-		n = - n
+		@percent * n
 
 	animate:->
 		requestAnimationFrame(@animate)
