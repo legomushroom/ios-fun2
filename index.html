@@ -113,35 +113,44 @@
       window.Loading = new window.Loading({
        //- text -> progress transition time, ms /* default 500 */
        transition: 600,
-       //- text -> progress delay time, ms, /* default 4000 */
-       delay: 4000,
-       //- background change time, ms, /* default 35000 */
-       rainbowTime: 35000,
+       //- text -> progress delay time, ms, /* default 4000; 'never' is also can be used */
+       delay: 2000,
+       //- background change time for 360deg period, ms, /* default 36000 */
+       rainbowTime: 36000,
        //- particle delay time, ms, /* default 1 */
        particleDelay: 1
       });
       
       i = 0;
-      setTimeout(function(){
-       window.Loading.setProgress(10)
-      }, 1000);
       
-      setTimeout(function(){
-       window.Loading.setProgress(20)				
-      }, 2000);
+      var run = function(){
+       window.Loading.setProgress(0);
+       
+       setTimeout(function(){
+        window.Loading.setProgress(10)
+       }, 1000);
+       
+       setTimeout(function(){
+        window.Loading.setProgress(20)				
+       }, 2000);
+       
+       setTimeout(function(){
+        window.Loading.setProgress(50)				
+       }, 5000);
+       
+       
+       setTimeout(function(){
+        window.Loading.setProgress(90)				
+       }, 8000);
+       
+       setTimeout(function(){
+        window.Loading.setProgress(100)				
+       }, 9000);
+      }
       
-      setTimeout(function(){
-       window.Loading.setProgress(50)				
-      }, 5000);
+      run();
+      setInterval(run, 15000);
       
-      
-      setTimeout(function(){
-       window.Loading.setProgress(90)				
-      }, 8000);
-      
-      setTimeout(function(){
-       window.Loading.setProgress(100)				
-      }, 9000);
       
       
     </script>

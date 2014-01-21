@@ -91,7 +91,7 @@
     Main.prototype.defaults = {
       transition: 500,
       delay: 4000,
-      rainbowTime: 35000,
+      rainbowTime: 36000,
       particleDelay: 1
     };
 
@@ -174,8 +174,10 @@
     };
 
     Main.prototype.animateChars = function() {
-      this.animateLines();
-      this.animateCurves();
+      if (this.settings.delay !== 'never') {
+        this.animateLines();
+        this.animateCurves();
+      }
       return this.animateRainbow();
     };
 
@@ -246,7 +248,7 @@
         p: this.currentProgress
       }).to({
         p: n
-      }, time * 2).easing(this.easing).onUpdate(function() {
+      }, time * 10).easing(this.easing).onUpdate(function() {
         it.process.setAttribute('width', "" + this.p);
         return it.currentProgress = this.p;
       }).start();

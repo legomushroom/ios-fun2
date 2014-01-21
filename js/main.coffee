@@ -55,7 +55,7 @@ class Main
 	defaults:
 		transition:    500
 		delay: 				 4000
-		rainbowTime:   35000
+		rainbowTime:   36000
 		particleDelay: 1
 
 	constructor:(@o={})->
@@ -66,11 +66,7 @@ class Main
 
 	vars:->
 		@settings = @extend @defaults, @o
-		# @transition = 		if @o.transition 		then @defaults.transition 		else @o.transition
-		# @delay = 					if @o.delay 				then @defaults.delay 					else @o.delay
-		# @rainbowTime = 		if @o.rainbowTime 	then @defaults.rainbowTime 		else @o.rainbowTime
-		# @particleDelay = 	if @o.particleDelay then @defaults.particleDelay 	else @o.particleDelay
-		
+
 		@percent = 6.9
 		@currentProgress = 0
 
@@ -117,8 +113,9 @@ class Main
 
 
 	animateChars:->
-		@animateLines()
-		@animateCurves()
+		if @settings.delay isnt 'never'
+			@animateLines()
+			@animateCurves()
 		@animateRainbow()
 
 	animateRainbow:->
@@ -151,7 +148,7 @@ class Main
 		time = Math.abs Math.abs(@currentProgress) - Math.abs(n)
 		it = @
 		tween = new TWEEN.Tween({ p: @currentProgress })
-			.to({ p: n }, time*2)
+			.to({ p: n }, time*10)
 			.easing(@easing)
 			.onUpdate(->
 				it.process.setAttribute 'width', "#{@p}"
