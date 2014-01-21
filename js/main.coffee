@@ -54,27 +54,28 @@ class Curve
 class Main
 	defaults:
 		transition:    500
-		particleDelay: 1
 		delay: 				 4000
 		rainbowTime:   35000
-	constructor:->
-		console.log @defaults
+		particleDelay: 1
+		
+	constructor:(@o={})->
 		@vars()
 
 		@animateChars()
 		@animate()
 
 	vars:->
-		@transition = 500
-		@particleDelay = 1
-		@delay = 4000
-		@rainbowTime = 35000
+		@transition = @o.transition? or @defaults.transition
+		@particleDelay = @o.particleDelay? or @defaults.particleDelay
+		@delay = @o.delay? or @defaults.delay
+		@rainbowTime = @o.rainbowTime? or @defaults.rainbowTime
+		
 		@percent = 6.9
+		@currentProgress = 0
 
 		@rainbow = document.getElementById('rainbow')
 		@process = document.getElementById('process')
 
-		@currentProgress = 0
 
 		@easing = TWEEN.Easing.Quadratic.Out
 		@animate = @bind @animate, @
@@ -187,4 +188,4 @@ class Main
 		bindArgs = Array::slice.call(arguments, 2)
 		wrapper
 
-window.Main = new Main
+window.Loading = Main

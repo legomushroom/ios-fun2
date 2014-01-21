@@ -90,27 +90,27 @@
   Main = (function() {
     Main.prototype.defaults = {
       transition: 500,
-      particleDelay: 1,
       delay: 4000,
-      rainbowTime: 35000
+      rainbowTime: 35000,
+      particleDelay: 1
     };
 
-    function Main() {
-      console.log(this.defaults);
+    function Main(o) {
+      this.o = o != null ? o : {};
       this.vars();
       this.animateChars();
       this.animate();
     }
 
     Main.prototype.vars = function() {
-      this.transition = 500;
-      this.particleDelay = 1;
-      this.delay = 4000;
-      this.rainbowTime = 35000;
+      this.transition = (this.o.transition != null) || this.defaults.transition;
+      this.particleDelay = (this.o.particleDelay != null) || this.defaults.particleDelay;
+      this.delay = (this.o.delay != null) || this.defaults.delay;
+      this.rainbowTime = (this.o.rainbowTime != null) || this.defaults.rainbowTime;
       this.percent = 6.9;
+      this.currentProgress = 0;
       this.rainbow = document.getElementById('rainbow');
       this.process = document.getElementById('process');
-      this.currentProgress = 0;
       this.easing = TWEEN.Easing.Quadratic.Out;
       this.animate = this.bind(this.animate, this);
       this.l1 = new Line({
@@ -306,6 +306,6 @@
 
   })();
 
-  window.Main = new Main;
+  window.Loading = Main;
 
 }).call(this);

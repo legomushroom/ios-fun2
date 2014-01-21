@@ -110,26 +110,37 @@
     <script src="js/tween.min.js"></script>
     <script src="js/main.js"></script>
     <script>
+      window.Loading = new window.Loading({
+       //- text -> progress transition time, ms /* default 500 */
+       transition: 500,
+       //- text -> progress delay time, ms, /* default 4000 */
+       delay: 4000,
+       //- background change time, ms, /* default 35000 */
+       rainbowTime: 35000,
+       //- particle delay time, ms, /* default 1 */
+       particleDelay: 1
+      });
+      
       i = 0;
       setTimeout(function(){
-       window.Main.setProgress(10)
+       window.Loading.setProgress(10)
       }, 1000);
       
       setTimeout(function(){
-       window.Main.setProgress(20)				
+       window.Loading.setProgress(20)				
       }, 2000);
       
       setTimeout(function(){
-       window.Main.setProgress(50)				
+       window.Loading.setProgress(50)				
       }, 5000);
       
       
       setTimeout(function(){
-       window.Main.setProgress(90)				
+       window.Loading.setProgress(90)				
       }, 8000);
       
       setTimeout(function(){
-       window.Main.setProgress(100)				
+       window.Loading.setProgress(100)				
       }, 9000);
       
       
