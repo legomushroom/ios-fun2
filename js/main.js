@@ -88,7 +88,15 @@
   })();
 
   Main = (function() {
+    Main.prototype.defaults = {
+      transition: 500,
+      particleDelay: 1,
+      delay: 4000,
+      rainbowTime: 35000
+    };
+
     function Main() {
+      console.log(this.defaults);
       this.vars();
       this.animateChars();
       this.animate();
@@ -96,7 +104,7 @@
 
     Main.prototype.vars = function() {
       this.transition = 500;
-      this.particleDelay = 50;
+      this.particleDelay = 1;
       this.delay = 4000;
       this.rainbowTime = 35000;
       this.percent = 6.9;
