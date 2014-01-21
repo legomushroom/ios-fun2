@@ -56,7 +56,7 @@ class Main
 		transition:    500
 		delay: 				 4000
 		rainbowTime:   36000
-		particleDelay: 1
+		particleDelay: 0
 
 	constructor:(@o={})->
 		@vars()
@@ -143,17 +143,22 @@ class Main
 										.start()
 				, i*@settings.particleDelay
 
-	setProgress:(n)->
+	setProgress:(n, isNoDelay=false)->
 		n = @normalizeNum n
-		time = Math.abs Math.abs(@currentProgress) - Math.abs(n)
-		it = @
-		tween = new TWEEN.Tween({ p: @currentProgress })
-			.to({ p: n }, time*10)
-			.easing(@easing)
-			.onUpdate(->
-				it.process.setAttribute 'width', "#{@p}"
-				it.currentProgress = @p
-			).start()
+
+		if isNoDelay
+			@process.setAttribute 'width', "#{n}"
+			@currentProgress = n
+		else 
+			it = @
+			time = Math.abs Math.abs(@currentProgress) - Math.abs(n)
+			tween = new TWEEN.Tween({ p: @currentProgress })
+				.to({ p: n }, time*10)
+				.easing(@easing)
+				.onUpdate(->
+					it.process.setAttribute 'width', "#{@p}"
+					it.currentProgress = @p
+				).start()
 		
 
 

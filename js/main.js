@@ -92,7 +92,7 @@
       transition: 500,
       delay: 4000,
       rainbowTime: 36000,
-      particleDelay: 1
+      particleDelay: 0
     };
 
     function Main(o) {
@@ -238,20 +238,28 @@
       return _results;
     };
 
-    Main.prototype.setProgress = function(n) {
+    Main.prototype.setProgress = function(n, isNoDelay) {
       var it, time, tween;
 
+      if (isNoDelay == null) {
+        isNoDelay = false;
+      }
       n = this.normalizeNum(n);
-      time = Math.abs(Math.abs(this.currentProgress) - Math.abs(n));
-      it = this;
-      return tween = new TWEEN.Tween({
-        p: this.currentProgress
-      }).to({
-        p: n
-      }, time * 10).easing(this.easing).onUpdate(function() {
-        it.process.setAttribute('width', "" + this.p);
-        return it.currentProgress = this.p;
-      }).start();
+      if (isNoDelay) {
+        this.process.setAttribute('width', "" + n);
+        return this.currentProgress = n;
+      } else {
+        it = this;
+        time = Math.abs(Math.abs(this.currentProgress) - Math.abs(n));
+        return tween = new TWEEN.Tween({
+          p: this.currentProgress
+        }).to({
+          p: n
+        }, time * 10).easing(this.easing).onUpdate(function() {
+          it.process.setAttribute('width', "" + this.p);
+          return it.currentProgress = this.p;
+        }).start();
+      }
     };
 
     Main.prototype.animateLines = function() {

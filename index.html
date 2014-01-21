@@ -117,14 +117,14 @@
        delay: 2000,
        //- background change time for 360deg period, ms, /* default 36000 */
        rainbowTime: 36000,
-       //- particle delay time, ms, /* default 1 */
-       particleDelay: 1
+       //- particle delay time, ms, /* default 0 */
+       particleDelay: 0
       });
       
       i = 0;
       
       var run = function(){
-       window.Loading.setProgress(0);
+       window.Loading.setProgress(0, true);
        
        setTimeout(function(){
         window.Loading.setProgress(10)
