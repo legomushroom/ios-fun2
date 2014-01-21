@@ -57,7 +57,7 @@ class Main
 		delay: 				 4000
 		rainbowTime:   35000
 		particleDelay: 1
-		
+
 	constructor:(@o={})->
 		@vars()
 
@@ -65,10 +65,11 @@ class Main
 		@animate()
 
 	vars:->
-		@transition = @o.transition? or @defaults.transition
-		@particleDelay = @o.particleDelay? or @defaults.particleDelay
-		@delay = @o.delay? or @defaults.delay
-		@rainbowTime = @o.rainbowTime? or @defaults.rainbowTime
+		@settings = @extend @defaults, @o
+		# @transition = 		if @o.transition 		then @defaults.transition 		else @o.transition
+		# @delay = 					if @o.delay 				then @defaults.delay 					else @o.delay
+		# @rainbowTime = 		if @o.rainbowTime 	then @defaults.rainbowTime 		else @o.rainbowTime
+		# @particleDelay = 	if @o.particleDelay then @defaults.particleDelay 	else @o.particleDelay
 		
 		@percent = 6.9
 		@currentProgress = 0
@@ -109,6 +110,11 @@ class Main
 		@curves = []
 		@curves.push @o1, @o2, @d2, @g2
 
+	extend:(obj, obj2)->
+		for key, value of obj2
+			if obj2[key]? then obj[key] = value
+		obj
+
 
 	animateChars:->
 		@animateLines()
@@ -118,7 +124,7 @@ class Main
 	animateRainbow:->
 		it = @
 		tween = new TWEEN.Tween({ deg: 0 })
-			.to({ deg: 360 }, @rainbowTime)
+			.to({ deg: 360 }, @settings.rainbowTime)
 			.onUpdate(->
 				it.rainbow.setAttribute 'transform', 'rotate(' + @deg + ', 0, 1000)'
 			).start().repeat(true)
@@ -132,13 +138,13 @@ class Main
 				end  	= { curve0: curve.d2.curve[0], curve1: curve.d2.curve[1], curve2: curve.d2.curve[2], curve3: curve.d2.curve[3], startX: curve.d2.startPoint.x, startY: curve.d2.startPoint.y, endX: curve.d2.endPoint.x, endY: curve.d2.endPoint.y }
 				setTimeout =>
 					tween = new TWEEN.Tween(start)
-										.to(end, @transition)
+										.to(end, @settings.transition)
 										.easing(@easing)
 										.onUpdate(->
 											curve.el.setAttribute 'd', "M#{@startX}, #{@startY} c#{@curve0}, #{@curve1}, #{@curve2}, #{@curve3}, #{@endX}, #{@endY}"
-										).yoyo(true).delay(@delay).repeat(999999999999999999999)
+										).yoyo(true).delay(@settings.delay).repeat(999999999999999999999)
 										.start()
-				, i*@particleDelay
+				, i*@settings.particleDelay
 
 	setProgress:(n)->
 		n = @normalizeNum n
@@ -160,7 +166,7 @@ class Main
 			do (line, i)=> 
 				setTimeout =>
 					tween = new TWEEN.Tween({ x1: line.points[0].x, y1: line.points[0].y, x2: line.points[1].x, y2: line.points[1].y })
-											.to({ x1: line.pointsEnd[0].x, y1: line.pointsEnd[0].y, x2: line.pointsEnd[1].x, y2: line.pointsEnd[1].y }, @transition)
+											.to({ x1: line.pointsEnd[0].x, y1: line.pointsEnd[0].y, x2: line.pointsEnd[1].x, y2: line.pointsEnd[1].y }, @settings.transition)
 											.easing(@easing)
 											.onUpdate(->
 												line.el.setAttribute 'x1', @x1
@@ -168,9 +174,9 @@ class Main
 
 												line.el.setAttribute 'x2', @x2
 												line.el.setAttribute 'y2', @y2
-											).yoyo(true).delay(@delay).repeat(999999999999999999999)
+											).yoyo(true).delay(@settings.delay).repeat(999999999999999999999)
 											.start()
-				, i*@particleDelay
+				, i*@settings.particleDelay
 
 	normalizeNum:(n)->
 		n = n % 101

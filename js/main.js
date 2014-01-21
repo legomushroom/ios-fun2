@@ -103,10 +103,7 @@
     }
 
     Main.prototype.vars = function() {
-      this.transition = (this.o.transition != null) || this.defaults.transition;
-      this.particleDelay = (this.o.particleDelay != null) || this.defaults.particleDelay;
-      this.delay = (this.o.delay != null) || this.defaults.delay;
-      this.rainbowTime = (this.o.rainbowTime != null) || this.defaults.rainbowTime;
+      this.settings = this.extend(this.defaults, this.o);
       this.percent = 6.9;
       this.currentProgress = 0;
       this.rainbow = document.getElementById('rainbow');
@@ -164,6 +161,18 @@
       return this.curves.push(this.o1, this.o2, this.d2, this.g2);
     };
 
+    Main.prototype.extend = function(obj, obj2) {
+      var key, value;
+
+      for (key in obj2) {
+        value = obj2[key];
+        if (obj2[key] != null) {
+          obj[key] = value;
+        }
+      }
+      return obj;
+    };
+
     Main.prototype.animateChars = function() {
       this.animateLines();
       this.animateCurves();
@@ -178,7 +187,7 @@
         deg: 0
       }).to({
         deg: 360
-      }, this.rainbowTime).onUpdate(function() {
+      }, this.settings.rainbowTime).onUpdate(function() {
         return it.rainbow.setAttribute('transform', 'rotate(' + this.deg + ', 0, 1000)');
       }).start().repeat(true);
     };
@@ -218,10 +227,10 @@
           return setTimeout(function() {
             var tween;
 
-            return tween = new TWEEN.Tween(start).to(end, _this.transition).easing(_this.easing).onUpdate(function() {
+            return tween = new TWEEN.Tween(start).to(end, _this.settings.transition).easing(_this.easing).onUpdate(function() {
               return curve.el.setAttribute('d', "M" + this.startX + ", " + this.startY + " c" + this.curve0 + ", " + this.curve1 + ", " + this.curve2 + ", " + this.curve3 + ", " + this.endX + ", " + this.endY);
-            }).yoyo(true).delay(_this.delay).repeat(999999999999999999999).start();
-          }, i * _this.particleDelay);
+            }).yoyo(true).delay(_this.settings.delay).repeat(999999999999999999999).start();
+          }, i * _this.settings.particleDelay);
         })(curve));
       }
       return _results;
@@ -266,13 +275,13 @@
               y1: line.pointsEnd[0].y,
               x2: line.pointsEnd[1].x,
               y2: line.pointsEnd[1].y
-            }, _this.transition).easing(_this.easing).onUpdate(function() {
+            }, _this.settings.transition).easing(_this.easing).onUpdate(function() {
               line.el.setAttribute('x1', this.x1);
               line.el.setAttribute('y1', this.y1);
               line.el.setAttribute('x2', this.x2);
               return line.el.setAttribute('y2', this.y2);
-            }).yoyo(true).delay(_this.delay).repeat(999999999999999999999).start();
-          }, i * _this.particleDelay);
+            }).yoyo(true).delay(_this.settings.delay).repeat(999999999999999999999).start();
+          }, i * _this.settings.particleDelay);
         })(line, i));
       }
       return _results;
